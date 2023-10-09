@@ -1,0 +1,3 @@
+aenv/
+.env/
+docker-compose.yaml
