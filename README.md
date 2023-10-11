@@ -1,36 +1,25 @@
-# TensorFlow Face Classification Project
+### 1. Kaggle API Key Setup
+- Visit your Kaggle account settings page to generate an API key.
+- Once generated, the key will be automatically downloaded as `kaggle.json`.
 
-This project utilizes TensorFlow to train a machine learning model for face classification. The objective is to accurately categorize faces based on various expressions/emotions.
+### 2. Setting Up the Environment
 
-## Overview
+Execute the following commands in order:
 
-Faces convey a wealth of information in our daily lives. With advancements in artificial intelligence and deep learning, it is now possible to train models that can interpret human faces and categorize them based on the displayed emotion. This project seeks to leverage TensorFlow's powerful capabilities to achieve this.
+```bash
+# Clone the repository
+git clone https://github.com/m-salem8/tf_pipeline.git
 
-## Installation
+# Navigate to the project directory
+cd tf-pipeline-airflow
 
-1. **Kaggle API Key Setup**:
-    - Go to your Kaggle account settings page to generate an API key.
-    - Save the key, which will be downloaded as `kaggle.json`.
-    - Set the Kaggle API key as environment variables:
-    ```bash
-    export KAGGLE_USERNAME=your_username
-    export KAGGLE_KEY=your_key
-    ```
+# Update the docker-compose.yaml file with your Kaggle credentials
+# Ensure to modify the 'environment' section:
+# KAGGLE_USERNAME: <your_kaggle_username>
+# KAGGLE_KEY: <your_kaggle_key>
 
-2. **Setting up the Environment**:
-    - Clone this repository:
-    ```bash
-    git clone https://github.com/m-salem8/tf_pipeline.git
-    ```
-    - Navigate to the project directory and install the required packages:
-    ```bash
-    cd tf_pipeline
-    pip install -r requirements.txt
-    ```
+# Start the initialization
+docker-compose up airflow-init
 
-3. **Download the Training and Test Data**:
-    - The data will be automatically downloaded when you run the appropriate script or command. [Provide specific instructions or script to run if needed.]
-
-4. **Saving the Trained Model**:
-    - After training, the model can be saved to be integrated into applications, such as a Flask web application.
-    - The model will be saved in a format that can be easily loaded and used for inference.
+# Bring up the Docker services
+docker-compose up -d
