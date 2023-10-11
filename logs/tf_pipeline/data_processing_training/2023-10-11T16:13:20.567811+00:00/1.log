@@ -1,0 +1,60 @@
+[2023-10-11 16:14:24,823] {taskinstance.py:896} INFO - Dependencies all met for <TaskInstance: tf_pipeline.data_processing_training 2023-10-11T16:13:20.567811+00:00 [queued]>
+[2023-10-11 16:14:24,859] {taskinstance.py:896} INFO - Dependencies all met for <TaskInstance: tf_pipeline.data_processing_training 2023-10-11T16:13:20.567811+00:00 [queued]>
+[2023-10-11 16:14:24,859] {taskinstance.py:1087} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-11 16:14:24,860] {taskinstance.py:1088} INFO - Starting attempt 1 of 1
+[2023-10-11 16:14:24,860] {taskinstance.py:1089} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-11 16:14:24,882] {taskinstance.py:1107} INFO - Executing <Task(PythonOperator): data_processing_training> on 2023-10-11T16:13:20.567811+00:00
+[2023-10-11 16:14:24,898] {standard_task_runner.py:52} INFO - Started process 691 to run task
+[2023-10-11 16:14:24,913] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'tf_pipeline', 'data_processing_training', '2023-10-11T16:13:20.567811+00:00', '--job-id', '21', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/DAG.py', '--cfg-path', '/tmp/tmp3_1m97ze', '--error-file', '/tmp/tmp_5yh6qs8']
+[2023-10-11 16:14:24,920] {standard_task_runner.py:77} INFO - Job 21: Subtask data_processing_training
+[2023-10-11 16:14:25,002] {logging_mixin.py:104} INFO - Running <TaskInstance: tf_pipeline.data_processing_training 2023-10-11T16:13:20.567811+00:00 [running]> on host 8ca10712e9bf
+[2023-10-11 16:14:25,098] {taskinstance.py:1302} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=tf_pipeline
+AIRFLOW_CTX_TASK_ID=data_processing_training
+AIRFLOW_CTX_EXECUTION_DATE=2023-10-11T16:13:20.567811+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-10-11T16:13:20.567811+00:00
+[2023-10-11 16:14:26,063] {logging_mixin.py:104} WARNING - /home/***/.local/lib/python3.6/site-packages/keras/optimizer_v2/optimizer_v2.py:356 UserWarning: The `lr` argument is deprecated, use `learning_rate` instead.
+[2023-10-11 16:14:26,130] {logging_mixin.py:104} INFO - Train directory exists: /app/tf_pipeline_data/train
+[2023-10-11 16:14:26,130] {logging_mixin.py:104} INFO - Test directory exists: /app/tf_pipeline_data/test
+[2023-10-11 16:14:28,579] {logging_mixin.py:104} INFO - Found 22968 images belonging to 7 classes.
+[2023-10-11 16:14:28,867] {logging_mixin.py:104} INFO - Found 1432 images belonging to 7 classes.
+[2023-10-11 16:14:28,947] {taskinstance.py:1501} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1157, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1331, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1361, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 150, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 161, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/_04_model_training.py", line 79, in process_train
+    model.fit(x = train_generator, epochs = epochs, validation_data = validation_generator)
+  File "/home/airflow/.local/lib/python3.6/site-packages/keras/engine/training.py", line 1148, in fit
+    steps_per_execution=self._steps_per_execution)
+  File "/home/airflow/.local/lib/python3.6/site-packages/keras/engine/data_adapter.py", line 1383, in get_data_handler
+    return DataHandler(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.6/site-packages/keras/engine/data_adapter.py", line 1150, in __init__
+    model=model)
+  File "/home/airflow/.local/lib/python3.6/site-packages/keras/engine/data_adapter.py", line 924, in __init__
+    **kwargs)
+  File "/home/airflow/.local/lib/python3.6/site-packages/keras/engine/data_adapter.py", line 794, in __init__
+    peek, x = self._peek_and_restore(x)
+  File "/home/airflow/.local/lib/python3.6/site-packages/keras/engine/data_adapter.py", line 928, in _peek_and_restore
+    return x[0], x
+  File "/home/airflow/.local/lib/python3.6/site-packages/keras_preprocessing/image/iterator.py", line 65, in __getitem__
+    return self._get_batches_of_transformed_samples(index_array)
+  File "/home/airflow/.local/lib/python3.6/site-packages/keras_preprocessing/image/iterator.py", line 238, in _get_batches_of_transformed_samples
+    x = self.image_data_generator.apply_transform(x, params)
+  File "/home/airflow/.local/lib/python3.6/site-packages/keras_preprocessing/image/image_data_generator.py", line 874, in apply_transform
+    order=self.interpolation_order)
+  File "/home/airflow/.local/lib/python3.6/site-packages/keras_preprocessing/image/affine_transformations.py", line 281, in apply_affine_transform
+    raise ImportError('Image transformations require SciPy. '
+ImportError: Image transformations require SciPy. Install SciPy.
+[2023-10-11 16:14:28,963] {taskinstance.py:1551} INFO - Marking task as FAILED. dag_id=tf_pipeline, task_id=data_processing_training, execution_date=20231011T161320, start_date=20231011T161424, end_date=20231011T161428
+[2023-10-11 16:14:29,057] {local_task_job.py:151} INFO - Task exited with return code 1

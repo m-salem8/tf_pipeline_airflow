@@ -1,3 +1,5 @@
 aenv/
-.env/
-docker-compose.yaml
+.env
+Dockerfile
+.kaggle/
+tf_pipeline_data

@@ -1,6 +1,7 @@
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import os
+from PIL import Image
 
 def preprocess_data(img_size=48, batch_size=64):
     train_datagen = ImageDataGenerator(rotation_range = 180,
@@ -18,6 +19,15 @@ def preprocess_data(img_size=48, batch_size=64):
     # path to local directory
     train_dir = "/app/tf_pipeline_data/train"
     test_dir = "/app/tf_pipeline_data/test"
+    if os.path.exists(train_dir):
+        print("Train directory exists:", train_dir)
+    else:
+        print("Train directory does NOT exist:", train_dir)
+
+    if os.path.exists(test_dir):
+        print("Test directory exists:", test_dir)
+    else:
+        print("Test directory does NOT exist:", test_dir)   
 
     train_generator = train_datagen.flow_from_directory(directory = train_dir,
     target_size = (img_size,img_size),
@@ -35,5 +45,5 @@ def preprocess_data(img_size=48, batch_size=64):
     subset = "validation"
     )
 
-    return None
+    return train_generator, validation_generator
 

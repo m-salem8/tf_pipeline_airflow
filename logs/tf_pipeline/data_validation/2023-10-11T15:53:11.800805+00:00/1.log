@@ -1,0 +1,22 @@
+[2023-10-11 15:54:15,980] {taskinstance.py:896} INFO - Dependencies all met for <TaskInstance: tf_pipeline.data_validation 2023-10-11T15:53:11.800805+00:00 [queued]>
+[2023-10-11 15:54:16,011] {taskinstance.py:896} INFO - Dependencies all met for <TaskInstance: tf_pipeline.data_validation 2023-10-11T15:53:11.800805+00:00 [queued]>
+[2023-10-11 15:54:16,012] {taskinstance.py:1087} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-11 15:54:16,012] {taskinstance.py:1088} INFO - Starting attempt 1 of 1
+[2023-10-11 15:54:16,012] {taskinstance.py:1089} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-11 15:54:16,033] {taskinstance.py:1107} INFO - Executing <Task(PythonOperator): data_validation> on 2023-10-11T15:53:11.800805+00:00
+[2023-10-11 15:54:16,050] {standard_task_runner.py:52} INFO - Started process 9764 to run task
+[2023-10-11 15:54:16,057] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'tf_pipeline', 'data_validation', '2023-10-11T15:53:11.800805+00:00', '--job-id', '16', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/DAG.py', '--cfg-path', '/tmp/tmpuz7dpu93', '--error-file', '/tmp/tmpxcwr_lny']
+[2023-10-11 15:54:16,064] {standard_task_runner.py:77} INFO - Job 16: Subtask data_validation
+[2023-10-11 15:54:16,137] {logging_mixin.py:104} INFO - Running <TaskInstance: tf_pipeline.data_validation 2023-10-11T15:53:11.800805+00:00 [running]> on host 0e092fd43c1f
+[2023-10-11 15:54:16,266] {taskinstance.py:1302} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=tf_pipeline
+AIRFLOW_CTX_TASK_ID=data_validation
+AIRFLOW_CTX_EXECUTION_DATE=2023-10-11T15:53:11.800805+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-10-11T15:53:11.800805+00:00
+[2023-10-11 15:54:16,270] {python.py:151} INFO - Done. Returned value was: None
+[2023-10-11 15:54:16,293] {taskinstance.py:1211} INFO - Marking task as SUCCESS. dag_id=tf_pipeline, task_id=data_validation, execution_date=20231011T155311, start_date=20231011T155415, end_date=20231011T155416
+[2023-10-11 15:54:16,353] {taskinstance.py:1265} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2023-10-11 15:54:16,388] {local_task_job.py:151} INFO - Task exited with return code 0

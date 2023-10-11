@@ -1,20 +1,20 @@
 import numpy as np 
 import pandas as pd
 import os
-import matplotlib.pyplot as plt
-import seaborn as sns
 import tensorflow as tf
 import keras
 from keras.preprocessing import image
 from keras.models import Sequential
 from keras.layers import Conv2D, MaxPool2D, Flatten,Dense,Dropout,BatchNormalization
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-import cv2
 from tensorflow.keras.applications import VGG16, InceptionResNetV2
 from keras import regularizers
 from tensorflow.keras.optimizers import Adam,RMSprop,SGD,Adamax
+from PIL import Image
 from _03_data_preprocessing import preprocess_data
 
+
+save_path = '/app/tf_pipeline_data/model_with_epoch'
 def build_model():
 
     # instantiate the model
@@ -73,15 +73,15 @@ def build_model():
 
     return model
 
-def process_train(epochs=1):
+
+def process_train_save(epochs=1):
     model = build_model()
     train_generator, validation_generator = preprocess_data(img_size=48, batch_size=64)
     model.fit(x = train_generator, epochs = epochs, validation_data = validation_generator)
-    return model
+    model.save(save_path)
 
 
-def save_model(model):
-    model.save('/app/tf_pipeline_data/model_with_epoch')  
+  
 
 
 

@@ -1,0 +1,26 @@
+[2023-10-11 15:40:46,689] {taskinstance.py:896} INFO - Dependencies all met for <TaskInstance: tf_pipeline.data_preprocessing 2023-10-11T15:37:23.955441+00:00 [queued]>
+[2023-10-11 15:40:46,724] {taskinstance.py:896} INFO - Dependencies all met for <TaskInstance: tf_pipeline.data_preprocessing 2023-10-11T15:37:23.955441+00:00 [queued]>
+[2023-10-11 15:40:46,724] {taskinstance.py:1087} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-11 15:40:46,725] {taskinstance.py:1088} INFO - Starting attempt 1 of 1
+[2023-10-11 15:40:46,725] {taskinstance.py:1089} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-11 15:40:46,744] {taskinstance.py:1107} INFO - Executing <Task(PythonOperator): data_preprocessing> on 2023-10-11T15:37:23.955441+00:00
+[2023-10-11 15:40:46,760] {standard_task_runner.py:52} INFO - Started process 8532 to run task
+[2023-10-11 15:40:46,767] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'tf_pipeline', 'data_preprocessing', '2023-10-11T15:37:23.955441+00:00', '--job-id', '11', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/DAG.py', '--cfg-path', '/tmp/tmp6mp9oo4z', '--error-file', '/tmp/tmpdqos9tpj']
+[2023-10-11 15:40:46,774] {standard_task_runner.py:77} INFO - Job 11: Subtask data_preprocessing
+[2023-10-11 15:40:46,867] {logging_mixin.py:104} INFO - Running <TaskInstance: tf_pipeline.data_preprocessing 2023-10-11T15:37:23.955441+00:00 [running]> on host 0e092fd43c1f
+[2023-10-11 15:40:47,005] {taskinstance.py:1302} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=tf_pipeline
+AIRFLOW_CTX_TASK_ID=data_preprocessing
+AIRFLOW_CTX_EXECUTION_DATE=2023-10-11T15:37:23.955441+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-10-11T15:37:23.955441+00:00
+[2023-10-11 15:40:47,010] {logging_mixin.py:104} INFO - Train directory exists: /app/tf_pipeline_data/train
+[2023-10-11 15:40:47,011] {logging_mixin.py:104} INFO - Test directory exists: /app/tf_pipeline_data/test
+[2023-10-11 15:40:49,932] {logging_mixin.py:104} INFO - Found 22968 images belonging to 7 classes.
+[2023-10-11 15:40:50,414] {logging_mixin.py:104} INFO - Found 1432 images belonging to 7 classes.
+[2023-10-11 15:40:50,465] {python.py:151} INFO - Done. Returned value was: None
+[2023-10-11 15:40:50,489] {taskinstance.py:1211} INFO - Marking task as SUCCESS. dag_id=tf_pipeline, task_id=data_preprocessing, execution_date=20231011T153723, start_date=20231011T154046, end_date=20231011T154050
+[2023-10-11 15:40:50,552] {taskinstance.py:1265} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-10-11 15:40:50,597] {local_task_job.py:151} INFO - Task exited with return code 0

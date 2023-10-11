@@ -43,7 +43,7 @@
 ---
 version: "3"
 x-airflow-common: &airflow-common
-  image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:2.1.1}
+  image: ${AIRFLOW_IMAGE_NAME:-msalem852/airflow-kaggle-image:v2}
   environment: &airflow-common-env
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor
     AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
@@ -61,11 +61,14 @@ x-airflow-common: &airflow-common
     KAGGLE_USERNAME: "salem852"
     KAGGLE_KEY: "f74678e6ea765844e93503c0b914afcc"
 
-    _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_REQUIREMENTS:- pymongo}
+    _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:- kaggle pymongo tensorflow Pillow scipy keras matplotlib}
   volumes:
     - ./dags:/opt/airflow/dags
     - ./logs:/opt/airflow/logs
     - ./plugins:/opt/airflow/plugins
+    - type: bind
+      source: ./tf_pipeline_data
+      target: /app/tf_pipeline_data
   user: "${AIRFLOW_UID:-50000}:${AIRFLOW_GID:-50000}"
   depends_on:
     redis:
@@ -101,7 +104,7 @@ services:
 
   airflow-webserver:
     <<: *airflow-common
-    command: webserver
+    command: airflow webserver
     ports:
       - 8080:8080
     healthcheck:
@@ -110,9 +113,6 @@ services:
       timeout: 10s
       retries: 5
     restart: always
-    environment:
-      KAGGLE_USERNAME: "salem852"
-      KAGGLE_KEY: "f74678e6ea765844e93503c0b914afcc"
 
   airflow-scheduler:
     <<: *airflow-common
@@ -142,15 +142,14 @@ services:
 
   airflow-init:
     <<: *airflow-common
-    command: version
+    command: airflow db upgrade 
     environment:
       <<: *airflow-common-env
       _AIRFLOW_DB_UPGRADE: "true"
       _AIRFLOW_WWW_USER_CREATE: "true"
       _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME:-airflow}
       _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-airflow}
-      KAGGLE_USERNAME: "salem852"
-      KAGGLE_KEY: "f74678e6ea765844e93503c0b914afcc"
+
   flower:
     <<: *airflow-common
     command: celery flower
