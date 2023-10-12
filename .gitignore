@@ -1,6 +1,5 @@
 aenv/
 .env
-Dockerfile
 .kaggle/
 tf_pipeline_data/train
 tf_pipeline_data/test
