@@ -2,6 +2,10 @@ aenv/
 .env
 Dockerfile
 .kaggle/
-tf_pipeline_data
+tf_pipeline_data/train
+tf_pipeline_data/test
+tf_pipeline_data/train_reduced
+tf_pipeline_data/test_reduced
+app
 projects/emotion_recog/tf-pipeline-airflow/logs/tf_pipeline
 venv/

@@ -17,8 +17,8 @@ def preprocess_data(img_size=48, batch_size=64):
     validation_split = 0.2)
 
     # path to local directory
-    train_dir = "/app/tf_pipeline_data/train"
-    test_dir = "/app/tf_pipeline_data/test"
+    train_dir = "/app/tf_pipeline_data/train_reduced"
+    test_dir = "/app/tf_pipeline_data/test_reduced"
     if os.path.exists(train_dir):
         print("Train directory exists:", train_dir)
     else:

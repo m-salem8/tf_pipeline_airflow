@@ -26,8 +26,6 @@ my_dag=DAG(
 
 ################################ TASKS ##########################################
 
-kaggle_key = os.environ.get('KAGGLE_KEY')
-user_name = os.environ.get("KAGGLE_USERNAME")
 
 task_1= PythonOperator(
     task_id='data_ingestion',
