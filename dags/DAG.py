@@ -41,9 +41,9 @@ task_1= PythonOperator(
     dag=my_dag,
     op_kwargs={"data": None},
     python_callable=validate_data
-)
+)"""
 
-task_3 = PythonOperator(
+task_2 = PythonOperator(
     task_id='data_processing_training_save', 
     dag = my_dag,
     python_callable=process_train_save
@@ -51,4 +51,4 @@ task_3 = PythonOperator(
 )
 
 task_1 >> task_2
-task_2 >> task_3"""
+
