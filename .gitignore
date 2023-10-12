@@ -4,3 +4,4 @@ Dockerfile
 .kaggle/
 tf_pipeline_data
 projects/emotion_recog/tf-pipeline-airflow/logs/tf_pipeline
+venv/

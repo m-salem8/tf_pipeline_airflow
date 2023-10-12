@@ -37,7 +37,7 @@ task_1= PythonOperator(
     retry_delay=timedelta(seconds = 15)
 )
 
-task_2 = PythonOperator(
+"""task_2 = PythonOperator(
     task_id='data_validation',
     dag=my_dag,
     op_kwargs={"data": None},
@@ -52,4 +52,4 @@ task_3 = PythonOperator(
 )
 
 task_1 >> task_2
-task_2 >> task_3
+task_2 >> task_3"""
