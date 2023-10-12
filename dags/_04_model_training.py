@@ -61,16 +61,6 @@ def build_model():
         metrics=['accuracy']
     )
 
-    # model.summary()
-
-    #TODO add plot_model
-
-    """plot_model(model, show_shapes=True,
-    show_layer_names=False,
-    expand_nested=True,
-    rankdir="TB",
-    dpi=100)"""
-
     return model
 
 

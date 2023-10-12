@@ -12,6 +12,7 @@ import os
 
 
 ############################### DAG Definition ########################################
+
 my_dag=DAG(
     dag_id='tf_pipeline',
     description='tf_pipline orchestration',
@@ -26,8 +27,6 @@ my_dag=DAG(
 
 ################################ TASKS ##########################################
 
-kaggle_key = os.environ.get('KAGGLE_KEY')
-user_name = os.environ.get("KAGGLE_USERNAME")
 
 task_1= PythonOperator(
     task_id='data_ingestion',
@@ -37,7 +36,7 @@ task_1= PythonOperator(
     retry_delay=timedelta(seconds = 15)
 )
 
-task_2 = PythonOperator(
+"""task_2 = PythonOperator(
     task_id='data_validation',
     dag=my_dag,
     op_kwargs={"data": None},
@@ -52,4 +51,4 @@ task_3 = PythonOperator(
 )
 
 task_1 >> task_2
-task_2 >> task_3
+task_2 >> task_3"""
